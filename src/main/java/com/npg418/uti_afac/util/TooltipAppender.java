@@ -28,7 +28,7 @@ public class TooltipAppender {
     }
 
     private static void addSubLangTitle(List<Component> tooltips, Component newLine) {
-        int rowIndex = Config.replaceItemNames == Config.subLangOn1stLine ? 0 : 1;
+        int rowIndex = Config.replaceItemNames == Config.subLangOn1stLine ? 1 : 0;
         tooltips.add(rowIndex, newLine);
     }
 }
