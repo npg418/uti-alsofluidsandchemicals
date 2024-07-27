@@ -13,10 +13,10 @@
 ## 各バーション、他MOD対応
 現在対応しているMinecraft・modLoaderのバージョンと外部MODは以下の通りです。
 
-| Minecraft | modLoader  | 対応外部MOD                              |
-|-----------|------------|--------------------------------------|
-| 1.20.4    | neoforge   | Mekanism,EMI,Jade,AppliedMekanistics |
-| その他       | *対応していません* | *対応していません*                           |
+| Minecraft | modLoader  | 対応外部MOD                                  |
+|-----------|------------|------------------------------------------|
+| 1.20.4    | neoforge   | Mekanism,EMI,Jade,AE2,AppliedMekanistics |
+| その他       | *対応していません* | *対応していません*                               |
 
 他バージョン対応、他外部MOD対応は[issue](./issue)立ててくれたらやります。  
 (全部自力でやるのはキツイから需要があるやつだけやります)

@@ -17,6 +17,7 @@ public class ModSpecificMixinPlugin implements IMixinConfigPlugin {
             put("FluidEmiStackMixin", "emi");
             put("ChemicalMixin", "mekanism");
             put("ChemicalEmiStackMixin", "mekanism");
+            put("FluidKeyRenderHandlerMixin", "ae2");
             put("AMChemicalStackRendererMixin", "appmek");
         }
     };

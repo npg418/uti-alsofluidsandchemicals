@@ -10,6 +10,7 @@
     "ChemicalEmiStackMixin",
     "ChemicalMixin",
     "FluidEmiStackMixin",
+    "FluidKeyRenderHandlerMixin",
     "AMChemicalStackRendererMixin"
   ]
 }
