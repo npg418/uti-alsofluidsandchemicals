@@ -1,5 +1,6 @@
 package com.npg418.uti_afac.mixin;
 
+import com.npg418.uti_afac.util.TooltipAppender;
 import me.ramidzkh.mekae2.ae2.AMChemicalStackRenderer;
 import me.ramidzkh.mekae2.ae2.MekanismKey;
 import net.minecraft.network.chat.Component;
@@ -10,8 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-import static com.npg418.uti_afac.util.TooltipAppenderKt.appendTooltip;
-
 @Mixin(AMChemicalStackRenderer.class)
 public class AMChemicalStackRendererMixin {
     @Inject(
@@ -21,7 +20,7 @@ public class AMChemicalStackRendererMixin {
     )
     public void appendSecondaryLanguageToTooltip(MekanismKey stack, CallbackInfoReturnable<List<Component>> cir) {
         List<Component> tooltips = cir.getReturnValue();
-        appendTooltip(tooltips, () -> stack.getStack().getType().getTextComponent());
+        TooltipAppender.appendTooltip(tooltips, () -> stack.getStack().getType().getTextComponent());
         cir.setReturnValue(tooltips);
     }
 }
