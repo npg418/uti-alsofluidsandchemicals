@@ -19,7 +19,7 @@ jobs:
         id: get_version
         run: |
           mod_version=$(grep '^mod_version=' gradle.properties | cut -d'=' -f2)
-          echo "::set-output name=mod_version::$mod_version"
+          echo "mod_version=$mod_version" >> $GITHUB_OUTPUT
 
       - name: Check if tag exists
         id: check_tag
@@ -27,10 +27,10 @@ jobs:
           mod_version=${{ steps.get_version.outputs.mod_version }}
           if git ls-remote --tags origin | grep -q "refs/tags/$mod_version"; then
             echo "Tag $mod_version already exists"
-            echo "::set-output name=tag_exists::true"
+            echo "tag_exists=true" >> $GITHUB_OUTPUT
           else
             echo "Tag $mod_version does not exist"
-            echo "::set-output name=tag_exists::false"
+            echo "tag_exists=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Exit if tag exists
