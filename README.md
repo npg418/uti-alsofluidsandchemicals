@@ -1,6 +1,6 @@
 # UntranslatedItems Also Fluids And Chemicals!
 
-日本語 | [English](./README.en)
+日本語 | [English](./README.en.md)
 
 ![uti_afac_banner](./assets/uti_afac_banner.png)
 
