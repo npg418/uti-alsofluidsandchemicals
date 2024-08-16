@@ -18,7 +18,7 @@
 | 1.20.4    | neoforge   | Mekanism,EMI,Jade,AE2,AppliedMekanistics |
 | その他       | *対応していません* | *対応していません*                               |
 
-他バージョン対応、他外部MOD対応は[issue](./issue)立ててくれたらやります。  
+他バージョン対応、他外部MOD対応は[issue](https://github.com/npg418/uti-alsofluidsandchemicals/issues)立ててくれたらやります。  
 (全部自力でやるのはキツイから需要があるやつだけやります)
 
 ## ライセンス
