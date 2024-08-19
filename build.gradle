@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = mod_version
@@ -129,12 +130,14 @@ repositories {
         content {
             includeGroup "curse.maven"
         }
-    } // untranslateditems
+    } // untranslateditems, jade
 
     maven {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     } // jei
+
+    mavenCentral()
 }
 
 dependencies {
@@ -160,11 +163,20 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    compileOnly annotationProcessor('io.github.llamalad7:mixinextras-common:0.4.1')
+    implementation jarJar('io.github.llamalad7:mixinextras-forge:0.4.1') {
+        jarJar.ranged(it, '[0.4.1,)')
+    }
+
     implementation fg.deobf("curse.maven:untranslateditems-401770:${uti_id}")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     implementation fg.deobf("curse.maven:jade-324717:${jade_id}")
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
+    config "${mod_id}.mixins.json"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
