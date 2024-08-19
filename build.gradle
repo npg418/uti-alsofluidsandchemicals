@@ -203,7 +203,8 @@ tasks.named('processResources', ProcessResources).configure {
             uti_version_range     : uti_version_range,
             jei_version_range     : jei_version_range,
             jade_version_range    : jade_version_range,
-            mekanism_version_range: mekanism_version_range
+            mekanism_version_range: mekanism_version_range,
+            ae2_version_range     : ae2_version_range
     ]
     inputs.properties replaceProperties
 
