@@ -139,7 +139,13 @@ repositories {
 
     mavenCentral() // mixinextras
 
-    maven { url 'https://modmaven.dev/' } // mekanism
+    maven {
+        url 'https://modmaven.dev/'
+        content {
+            includeGroup 'mekanism'
+            includeGroup 'appeng'
+        }
+    } // mekanism, AE2
 }
 
 dependencies {
@@ -175,6 +181,7 @@ dependencies {
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     implementation fg.deobf("curse.maven:jade-324717:${jade_id}")
     implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")
+    implementation fg.deobf("appeng:appliedenergistics2-forge:${ae2_version}")
 }
 
 mixin {

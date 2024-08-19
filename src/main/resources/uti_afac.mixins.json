@@ -8,6 +8,7 @@
     "BlockNameProviderMixin",
     "FluidHelperMixin",
     "ChemicalMixin",
-    "ChemicalStackRendererMixin"
+    "ChemicalStackRendererMixin",
+    "FluidKeyRenderHandlerMixin"
   ]
 }

@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+// TODO: replaceItemNamesをtrueにしたときtooltipの方がsubLangになる問題
 @Mixin(FluidHelper.class)
 public abstract class FluidHelperMixin {
     @Unique
