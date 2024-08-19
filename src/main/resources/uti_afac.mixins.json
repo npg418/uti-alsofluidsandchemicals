@@ -9,6 +9,7 @@
     "FluidHelperMixin",
     "ChemicalMixin",
     "ChemicalStackRendererMixin",
-    "FluidKeyRenderHandlerMixin"
+    "FluidKeyRenderHandlerMixin",
+    "AMChemicalStackRendererMixin"
   ]
 }
