@@ -6,6 +6,8 @@
   "package": "com.npg418.uti_afac.mixin",
   "client": [
     "BlockNameProviderMixin",
-    "FluidHelperMixin"
+    "FluidHelperMixin",
+    "ChemicalMixin",
+    "ChemicalStackRendererMixin"
   ]
 }

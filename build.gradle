@@ -137,7 +137,9 @@ repositories {
         url = "https://maven.blamejared.com/"
     } // jei
 
-    mavenCentral()
+    mavenCentral() // mixinextras
+
+    maven { url 'https://modmaven.dev/' } // mekanism
 }
 
 dependencies {
@@ -172,6 +174,7 @@ dependencies {
     implementation fg.deobf("curse.maven:untranslateditems-401770:${uti_id}")
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     implementation fg.deobf("curse.maven:jade-324717:${jade_id}")
+    implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")
 }
 
 mixin {
