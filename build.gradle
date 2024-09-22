@@ -18,6 +18,25 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+    exclusiveContent {
+        forRepository {
+            maven {
+                name 'CurseMarven'
+                url 'https://cursemaven.com'
+            }
+        }
+        filter {
+            includeGroup('curse.maven')
+        }
+    }
+    maven {
+        name 'TerraformersMC'
+        url 'https://maven.terraformersmc.com/'
+    }
+    maven {
+        name 'ModMaven'
+        url 'https://modmaven.dev/'
+    }
 }
 
 base {
@@ -133,6 +152,13 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    implementation "curse.maven:untranslated-items-401770:$uti_id"
+    api "curse.maven:jade-324717:$jade_id"
+    api "dev.emi:emi-neoforge:$emi_version"
+    api "mekanism:Mekanism:$mekanism_version"
+    api "appeng:appliedenergistics2:$ae2_version"
+    api "curse.maven:applied-mekanistics-574300:$appliedmekanistics_id"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -149,7 +175,9 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
-            mod_description        : mod_description
+            mod_description        : mod_description,
+            mod_credits            : mod_credits,
+            uti_version_range      : uti_version_range
     ]
     inputs.properties replaceProperties
     expand replaceProperties
