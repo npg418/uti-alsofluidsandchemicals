@@ -159,6 +159,7 @@ dependencies {
     api "mekanism:Mekanism:$mekanism_version"
     api "appeng:appliedenergistics2:$ae2_version"
     api "curse.maven:applied-mekanistics-574300:$appliedmekanistics_id"
+    api "curse.maven:gregtechceu-modern-890405:$gtm_id"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
