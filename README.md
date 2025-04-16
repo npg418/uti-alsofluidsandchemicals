@@ -21,6 +21,9 @@
 | 1.20.1    | forge      | Mekanism,JEI,Jade,AE2,AppliedMekanistics,GregTechCEu |
 | その他       | *対応していません* | *対応していません*                                           |
 
+> [!IMPORTANT]
+> Mekanismのv1.21.1-10.7.11.76以降はChemicalEmiStackに破壊的変更がなされているのでUTI-AFACのv1.2.0以降を使用してください。
+
 他バージョン対応、他外部MOD対応は[issue](https://github.com/npg418/uti-alsofluidsandchemicals/issues)
 立ててくれたらやります。  
 (全部自力でやるのはキツイから需要があるやつだけやります)

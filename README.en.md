@@ -21,6 +21,9 @@ Currently supported Minecraft/modLoader versions and external mods are as follow
 | 1.20.1    | forge         | Mekanism,JEI,Jade,AE2,AppliedMekanistics,GregTechCEu |
 | others    | *unsupported* | *unsupported*                                        |
 
+> [!IMPORTANT]
+> Mekanism has breaking change in ChemicalEmiStack after v1.21.1-10.7.11.76. So please use UTI-AFAC v1.2.0 or later.
+
 If you want other minecraft versions, other modLoader, or other external mods support, please
 open [issue](https://github.com/npg418/uti-alsofluidsandchemicals/issues).  
 (It's hard to support all versions independently, so I'll support the ones in demand.)
