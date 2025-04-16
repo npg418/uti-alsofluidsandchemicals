@@ -3,6 +3,7 @@ package com.npg418.uti_afac.mixin;
 import com.npg418.uti_afac.util.TooltipAppender;
 import mekanism.api.chemical.Chemical;
 import mekanism.client.recipe_viewer.emi.ChemicalEmiStack;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ChemicalEmiStackMixin {
     @Shadow
     @Final
-    private Chemical chemical;
+    private Holder<Chemical> chemical;
 
     @Inject(
             method = "getTooltipText",
@@ -26,7 +27,7 @@ public class ChemicalEmiStackMixin {
     )
     public void appendSecondaryLanguageToTooltip(CallbackInfoReturnable<List<Component>> cir) {
         List<Component> tooltips = cir.getReturnValue();
-        TooltipAppender.appendTooltip(tooltips, () -> chemical.getTextComponent());
+        TooltipAppender.appendTooltip(tooltips, () -> chemical.value().getTextComponent());
         cir.setReturnValue(tooltips);
     }
 }

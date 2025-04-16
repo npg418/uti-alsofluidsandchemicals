@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings({"UnstableApiUsage", "deprecation"})
 @Mixin(FluidEmiStack.class)
 public class FluidEmiStackMixin {
     @Shadow
