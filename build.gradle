@@ -216,6 +216,7 @@ tasks.named('processResources', ProcessResources).configure {
             ae2_version_range               : ae2_version_range,
             appliedmekanistics_version_range: appliedmekanistics_version_range,
             gtm_version_range               : gtm_version_range,
+            emi_version_range               : emi_version_range,
     ]
     inputs.properties replaceProperties
 
