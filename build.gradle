@@ -146,6 +146,11 @@ repositories {
             includeGroup 'appeng'
         }
     } // Mekanism, AE2
+
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    } // EMI
 }
 
 dependencies {
@@ -184,6 +189,8 @@ dependencies {
     implementation fg.deobf("appeng:appliedenergistics2-forge:${ae2_version}")
     implementation fg.deobf("curse.maven:applied-mekanistics-574300:${appliedmekanistics_id}")
     implementation fg.deobf("curse.maven:gregtechceu-modern-890405:$gtm_id")
+    compileOnly fg.deobf("dev.emi:emi-forge:${emi_version}:api")
+    runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
 }
 
 mixin {
