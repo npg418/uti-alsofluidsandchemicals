@@ -14,12 +14,12 @@ Great respect for KatatsumuriPan!
 
 Currently supported Minecraft/modLoader versions and external mods are as follows.
 
-| Minecraft | modLoader     | supported external mods                              |
-|-----------|---------------|------------------------------------------------------|
-| 1.21.1    | neoforge      | Mekanism,EMI,Jade,AE2,AppliedMekanistics,GregTechCEu |
-| 1.20.4    | neoforge      | Mekanism,EMI,Jade,AE2,AppliedMekanistics             |
-| 1.20.1    | forge         | Mekanism,JEI,Jade,AE2,AppliedMekanistics,GregTechCEu |
-| others    | *unsupported* | *unsupported*                                        |
+| Minecraft | modLoader     | supported external mods                                  |
+|-----------|---------------|----------------------------------------------------------|
+| 1.21.1    | neoforge      | Mekanism,EMI,Jade,AE2,AppliedMekanistics,GregTechCEu     |
+| 1.20.4    | neoforge      | Mekanism,EMI,Jade,AE2,AppliedMekanistics                 |
+| 1.20.1    | forge         | Mekanism,JEI,EMI,Jade,AE2,AppliedMekanistics,GregTechCEu |
+| others    | *unsupported* | *unsupported*                                            |
 
 > [!IMPORTANT]
 > Mekanism has breaking change in ChemicalEmiStack after v1.21.1-10.7.11.76. So please use UTI-AFAC v1.2.0 or later.

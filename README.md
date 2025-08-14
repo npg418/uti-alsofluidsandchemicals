@@ -14,12 +14,12 @@
 
 現在対応しているMinecraft・modLoaderのバージョンと外部MODは以下の通りです。
 
-| Minecraft | modLoader  | 対応外部MOD                                              |
-|-----------|------------|------------------------------------------------------|
-| 1.21.1    | neoforge   | Mekanism,EMI,Jade,AE2,AppliedMekanistics,GregTechCEu |
-| 1.20.4    | neoforge   | Mekanism,EMI,Jade,AE2,AppliedMekanistics             |
-| 1.20.1    | forge      | Mekanism,JEI,Jade,AE2,AppliedMekanistics,GregTechCEu |
-| その他       | *対応していません* | *対応していません*                                           |
+| Minecraft | modLoader  | 対応外部MOD                                                  |
+|-----------|------------|----------------------------------------------------------|
+| 1.21.1    | neoforge   | Mekanism,EMI,Jade,AE2,AppliedMekanistics,GregTechCEu     |
+| 1.20.4    | neoforge   | Mekanism,EMI,Jade,AE2,AppliedMekanistics                 |
+| 1.20.1    | forge      | Mekanism,JEI,EMI,Jade,AE2,AppliedMekanistics,GregTechCEu |
+| その他       | *対応していません* | *対応していません*                                               |
 
 > [!IMPORTANT]
 > Mekanismのv1.21.1-10.7.11.76以降はChemicalEmiStackに破壊的変更がなされているのでUTI-AFACのv1.2.0以降を使用してください。
