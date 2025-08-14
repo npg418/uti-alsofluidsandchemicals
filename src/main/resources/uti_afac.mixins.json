@@ -11,6 +11,7 @@
     "ChemicalStackRendererMixin",
     "FluidHelperMixin",
     "FluidKeyRenderHandlerMixin",
-    "MaterialMixin"
+    "MaterialMixin",
+    "FluidEmiStackMixin"
   ]
 }
