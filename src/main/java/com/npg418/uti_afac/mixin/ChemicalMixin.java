@@ -1,7 +1,7 @@
 package com.npg418.uti_afac.mixin;
 
 import bre2el.uti.LanguageMapProxy;
-import bre2el.uti.TranslationTextComponentHelper;
+import bre2el.uti.TranslatableContentsHelper;
 import bre2el.uti.config.Config;
 import mekanism.api.chemical.Chemical;
 import net.minecraft.network.chat.Component;
@@ -24,7 +24,7 @@ public class ChemicalMixin {
             Component itc = cir.getReturnValue();
             LanguageMapProxy.switchLangMap(false);
             if (itc.getContents() instanceof TranslatableContents) {
-                TranslationTextComponentHelper.setChgLangToTextCompo(itc, true);
+                TranslatableContentsHelper.setChgLangToTextCompo(itc, true);
             }
             cir.setReturnValue(itc);
         }

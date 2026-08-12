@@ -1,7 +1,7 @@
 package com.npg418.uti_afac.mixin;
 
 import bre2el.uti.LanguageMapProxy;
-import bre2el.uti.TranslationTextComponentHelper;
+import bre2el.uti.TranslatableContentsHelper;
 import bre2el.uti.UntranslatedItems;
 import bre2el.uti.config.Config;
 import bre2el.uti.proxy.ServerProxy;
@@ -61,7 +61,7 @@ public abstract class FluidHelperMixin {
             if (!ServerProxy.serverSide && Config.replaceItemNames && LanguageMapProxy.isReady()) {
                 LanguageMapProxy.switchLangMap(false);
                 if (itc.getContents() instanceof TranslatableContents) {
-                    TranslationTextComponentHelper.setChgLangToTextCompo(itc, true);
+                    TranslatableContentsHelper.setChgLangToTextCompo(itc, true);
                 }
             }
             cir.setReturnValue(itc);
@@ -80,14 +80,14 @@ public abstract class FluidHelperMixin {
     public void appendSecondaryLanguageToTooltip(ITooltipBuilder tooltip, FluidStack ingredient, TooltipFlag tooltipFlag, CallbackInfo ci, @Local LocalRef<Component> localRef) {
         if (UntranslatedItems.initComplete && LanguageMapProxy.isReady() && Config.dispBothLanguagesOnTooltip) {
             Component currentLine = localRef.get();
-            Component newLine = TranslationTextComponentHelper.deepCopyTranslatable(currentLine);
-            TranslationTextComponentHelper.setChgLangToTextCompo(newLine, !Config.replaceItemNames);
+            Component newLine = TranslatableContentsHelper.deepCopyTranslatable(currentLine);
+            TranslatableContentsHelper.setChgLangToTextCompo(newLine, !Config.replaceItemNames);
             String currentStr = currentLine.getString();
             String newStr = newLine.getString();
             if (newStr.equals(currentStr)) {
-                LanguageMapProxy.cancelLangMapToUs(true);
+                LanguageMapProxy.cancelSwitchLangMap(true);
                 newLine = getDisplayName(ingredient);
-                LanguageMapProxy.cancelLangMapToUs(false);
+                LanguageMapProxy.cancelSwitchLangMap(false);
                 newStr = newLine.getString();
                 if (!newStr.equals(currentStr)) {
                     UTI_AlsoFluidsAndChemicals$addSubLangTitle(tooltip, localRef, currentLine, newLine);
