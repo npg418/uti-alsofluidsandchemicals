@@ -77,7 +77,8 @@ public abstract class FluidHelperMixin {
             ),
             remap = false
     )
-    public void appendSecondaryLanguageToTooltip(ITooltipBuilder tooltip, FluidStack ingredient, TooltipFlag tooltipFlag, CallbackInfo ci, @Local LocalRef<Component> localRef) {
+    public void appendSecondaryLanguageToTooltip(ITooltipBuilder tooltip, FluidStack ingredient, TooltipFlag tooltipFlag, CallbackInfo ci, @Local(name = "displayName")
+    LocalRef<Component> localRef) {
         if (UntranslatedItems.initComplete && LanguageMapProxy.isReady() && Config.dispBothLanguagesOnTooltip) {
             Component currentLine = localRef.get();
             Component newLine = TranslatableContentsHelper.deepCopyTranslatable(currentLine);
