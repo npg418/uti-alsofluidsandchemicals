@@ -188,7 +188,8 @@ dependencies {
     implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")
     implementation fg.deobf("appeng:appliedenergistics2-forge:${ae2_version}")
     implementation fg.deobf("curse.maven:applied-mekanistics-574300:${appliedmekanistics_id}")
-    implementation fg.deobf("curse.maven:gregtechceu-modern-890405:$gtm_id")
+    // FIXME: GregTech CEu ModernがJEI 15.40以降に対応するまで待ち
+    compileOnly fg.deobf("curse.maven:gregtechceu-modern-890405:$gtm_id")
     implementation fg.deobf("dev.emi:emi-forge:${emi_version}")
 }
 

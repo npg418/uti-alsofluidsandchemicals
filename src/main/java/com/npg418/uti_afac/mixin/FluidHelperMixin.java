@@ -5,9 +5,10 @@ import bre2el.uti.TranslatableContentsHelper;
 import bre2el.uti.UntranslatedItems;
 import bre2el.uti.config.Config;
 import bre2el.uti.proxy.ServerProxy;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalRef;
-import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.forge.platform.FluidHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
@@ -19,13 +20,14 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.List;
 
 // TODO: replaceItemNamesをtrueにしたときtooltipの方がsubLangになる問題
 @Mixin(FluidHelper.class)
 public abstract class FluidHelperMixin {
     @Unique
-    private static void UTI_AlsoFluidsAndChemicals$addSubLangTitle(ITooltipBuilder tooltip, LocalRef<Component> localRef, Component currentLine, Component newLine) {
+    private static void UTI_AlsoFluidsAndChemicals$addSubLangTitle(List<Component> tooltip, LocalRef<Component> localRef, Component currentLine, Component newLine) {
         if (Config.replaceItemNames == Config.subLangOn1stLine) {
             tooltip.add(currentLine);
             localRef.set(newLine);
@@ -38,47 +40,32 @@ public abstract class FluidHelperMixin {
     @Shadow(remap = false)
     public abstract Component getDisplayName(FluidStack ingredient);
 
-    @Inject(
-            method = "getDisplayName(Lnet/minecraftforge/fluids/FluidStack;)Lnet/minecraft/network/chat/Component;",
-            at = @At("HEAD"),
-            remap = false
-    )
-    private void switchToSubLang(FluidStack ingredient, CallbackInfoReturnable<Component> cir) {
-        if (UntranslatedItems.initComplete && !ServerProxy.serverSide && Config.replaceItemNames && LanguageMapProxy.isReady()) {
+    @WrapMethod(method = "getDisplayName(Lnet/minecraftforge/fluids/FluidStack;)Lnet/minecraft/network/chat/Component;", remap = false)
+    private Component UTI_AlsoFluidsAndChemicals$wrapGetDisplayName(FluidStack ingredient, Operation<Component> original) {
+        if (!UntranslatedItems.initComplete) {
+            return original.call(ingredient);
+        }
+        boolean switched = !ServerProxy.serverSide && Config.replaceItemNames && LanguageMapProxy.isReady();
+        if (switched) {
             LanguageMapProxy.switchLangMap(true);
         }
-    }
-
-    @Inject(
-            method = "getDisplayName(Lnet/minecraftforge/fluids/FluidStack;)Lnet/minecraft/network/chat/Component;",
-            at = @At("RETURN"),
-            cancellable = true,
-            remap = false
-    )
-    private void switchToPrimeLang(FluidStack ingredient, CallbackInfoReturnable<Component> cir) {
-        if (UntranslatedItems.initComplete) {
-            Component itc = cir.getReturnValue();
-            if (!ServerProxy.serverSide && Config.replaceItemNames && LanguageMapProxy.isReady()) {
+        Component itc;
+        try {
+            itc = original.call(ingredient);
+        } finally {
+            if (switched) {
                 LanguageMapProxy.switchLangMap(false);
-                if (itc.getContents() instanceof TranslatableContents) {
-                    TranslatableContentsHelper.setChgLangToTextCompo(itc, true);
-                }
             }
-            cir.setReturnValue(itc);
         }
+        if (switched && itc.getContents() instanceof TranslatableContents) {
+            TranslatableContentsHelper.setChgLangToTextCompo(itc, true);
+        }
+        return itc;
     }
 
-    @Inject(
-            method = "getTooltip(Lmezz/jei/api/gui/builder/ITooltipBuilder;Lnet/minecraftforge/fluids/FluidStack;Lnet/minecraft/world/item/TooltipFlag;)V",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lmezz/jei/api/gui/builder/ITooltipBuilder;add(Lnet/minecraft/network/chat/FormattedText;)V",
-                    remap = false
-            ),
-            remap = false
-    )
-    public void appendSecondaryLanguageToTooltip(ITooltipBuilder tooltip, FluidStack ingredient, TooltipFlag tooltipFlag, CallbackInfo ci, @Local(name = "displayName")
-    LocalRef<Component> localRef) {
+    @Inject(method = "getTooltip(Ljava/util/List;Lnet/minecraftforge/fluids/FluidStack;Lnet/minecraft/world/item/TooltipFlag;)V", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z", remap = false), remap = false)
+    public void appendSecondaryLanguageToTooltip(List<Component> tooltip, FluidStack ingredient, TooltipFlag tooltipFlag, CallbackInfo ci,
+                                                 @Local(name = "displayName") LocalRef<Component> localRef) {
         if (UntranslatedItems.initComplete && LanguageMapProxy.isReady() && Config.dispBothLanguagesOnTooltip) {
             Component currentLine = localRef.get();
             Component newLine = TranslatableContentsHelper.deepCopyTranslatable(currentLine);
